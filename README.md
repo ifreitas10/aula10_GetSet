@@ -37,9 +37,7 @@ public class Controlador {
     Cadastro avaliar = new Cadastro();
     avaliar.setSenha(Integer.parseInt(JOptionPane.showInputDialog("Digite a senha")));
     avaliar.setNumero1(Integer.parseInt(JOptionPane.showInputDialog("Digite um número")));
-    avaliar.setNumero2(Integer.parseInt(JOptionPane.showInputDialog("Digite um número")));
-    //System.out.println(avaliar.getSenha());
-    // System.out.println(avaliar.getNumero1());
+    avaliar.setNumero2(Integer.parseInt(JOptionPane.showInputDialog("Digite um número")));    
 
     int senha = avaliar.getSenha();
     int numero1 = avaliar.getNumero1();
