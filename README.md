@@ -105,10 +105,13 @@ public class Cadastro {
 ------------------------------------------------------------------------------------------------------------------
 //Desafio 2
 public class Controlador {
-    public static void receberDadosVeiculo(Cadastro carro){
+   public static void receberDadosVeiculo(Cadastro carro){
         int anoVeiculo;
         Double valorVeiculo;
         Double valorVeiculoComDesconto;
+        Double valorTotalVeiculoComDesconto;
+
+        DecimalFormat formatador = new DecimalFormat("###,###,##0.00");
 
         carro.setValorVeiculo(Double.parseDouble(JOptionPane.showInputDialog("Digite o valor do veículo")));
         carro.setAnoVeiculo(Integer.parseInt(JOptionPane.showInputDialog("Digite o ano do veículo")));
@@ -119,17 +122,17 @@ public class Controlador {
 
         if (anoVeiculo <= 2000){
             valorVeiculoComDesconto = (valorVeiculo * 0.12);
+            valorTotalVeiculoComDesconto = valorVeiculo - valorVeiculoComDesconto;
             carro.incrementaTotalVeiculo();
             carro.incrementaTotalVeiculo2000();
         }else{
-            valorVeiculoComDesconto = (valorVeiculo * 0.7);
+            valorVeiculoComDesconto = (valorVeiculo * 0.07);
+            valorTotalVeiculoComDesconto = valorVeiculo - valorVeiculoComDesconto;
             carro.incrementaTotalVeiculo();
         }
 
+        JOptionPane.showMessageDialog(null,"Valor do veiculo: "+formatador.format(valorVeiculo)+"R$"+" com desconto de "+formatador.format(valorVeiculoComDesconto)+"R$\nValor do veículo com desconto: "+formatador.format(valorTotalVeiculoComDesconto)+"R$");
         desejaContinuar(carro);
-        System.out.println("Valor do veiculo: "+valorVeiculo+" com desconto de "+valorVeiculoComDesconto+"R$");
-        System.out.println("Veiculo do ano: "+anoVeiculo);
-        System.out.println("Meu get "+carro.getTotalVeiculo());
     }
 
     public static void desejaContinuar(Cadastro carro){
@@ -138,9 +141,9 @@ public class Controlador {
         if (desejaContinuar.equals("s")){
             receberDadosVeiculo(carro);
         }else{
-            JOptionPane.showMessageDialog(null,"Quantidade de carros: " + carro.getTotalVeiculo());
-            JOptionPane.showMessageDialog(null,"Quantidade de carros com ano até 2000: " + carro.getTotalVeiculo2000());
-            JOptionPane.showMessageDialog(null,"SAIU");
+            JOptionPane.showMessageDialog(null,"Quantidade de carros: "+carro.getTotalVeiculo()+"\nQuantidade de carros com ano até 2000: \n"+carro.getTotalVeiculo2000());
+            //JOptionPane.showMessageDialog(null,"Quantidade de carros com ano até 2000: " +carro.getTotalVeiculo2000());
+            //JOptionPane.showMessageDialog(null,"SAIU");
         }
     }
 
