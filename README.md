@@ -33,6 +33,7 @@ public class Cadastro {
 ------------------------------------------------------------------------------------------------------------------
 //DESAFIO 1
 import javax.swing.*;
+import java.text.DecimalFormat;
 public class Controlador {
     int soma;
 
